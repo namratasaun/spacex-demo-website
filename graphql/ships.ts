@@ -1,11 +1,18 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const ships = gql`
   query ships {
-    ships {
-    id
-    class
-    name
+    ships(input: { pagination: { limit: 1, offset: 0 } }) {
+      id
+      class
+      image
+      active
+      name
+      __typename
+      Missions {
+        flight
+        name
+      }
     }
   }
 `;

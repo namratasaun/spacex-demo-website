@@ -1,10 +1,5 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  NormalizedCacheObject,
-  createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 const useClient = (): ApolloClient<NormalizedCacheObject> => {
   const authLink = setContext(async (_, { headers }) => {
@@ -16,7 +11,8 @@ const useClient = (): ApolloClient<NormalizedCacheObject> => {
   });
 
   const httpLink = createHttpLink({
-    uri: "https://spacex-production.up.railway.app/api/graphql",
+    // uri: 'https://spacex-production.up.railway.app/api/graphql',
+    uri: 'http://localhost:3000',
   });
 
   const client = new ApolloClient({
