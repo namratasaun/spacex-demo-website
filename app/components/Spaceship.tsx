@@ -1,21 +1,43 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import SpaceShipInfo from './SpaceshipInfo';
+import Image from "next/image";
 
-const Spaceship = ({ ship }) => {
-  const [modal, setModal] = useState(false);
+export type Ship = {
+  id: string;
+  class: string | null;
+  image: string | null;
+  active: boolean;
+  name: string;
+  __typename: string;
+  Missions: {
+    flight: string;
+    name: string;
+  }[];
+};
 
-  const openModal = () => {
-    setModal(true);
-  };
+const Spaceship = ({
+  ship,
+  handleClick,
+}: {
+  ship: Ship;
+  handleClick: () => void;
+}) => {
   return (
-    <>
-      <div onClick={openModal} className='flex px-4'>
-        {ship?.name}
+    <div
+      onClick={handleClick}
+      className="col-span-3 h-96 p-4  rounded-xl bg-gradient-to-r from-slate-900 to-zinc-900 cursor-pointer border-2"
+    >
+      <Image
+        width={500}
+        height={500}
+        src={ship.image || "/battleship.svg"}
+        alt={ship.name}
+        className="w-fyll h-72 object-cover rounded-xl"
+      />
+      <div className="pt-4">
+        <p className="text-xl"> {ship.name}</p>
       </div>
-      {modal && <SpaceShipInfo ship={ship} />}
-    </>
+    </div>
   );
 };
 
