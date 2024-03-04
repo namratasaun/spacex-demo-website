@@ -12,7 +12,9 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3005](http://localhost:3005) with your browser to see the result.
+
+You can change `app/util/useClient.ts` and change the httpLink uri to the backend server. Currently I have pointed it to [http://localhost:3000](http://localhost:3000) as for the backend on local it runs on port 3000
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
